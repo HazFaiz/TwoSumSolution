@@ -1,95 +1,42 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 
 export default function Home() {
+
+  let twoSum = function(numbers, target) {
+    let leftIndex = 0;
+    let rightIndex = numbers.length -1
+    //use a left and right pointer at each end of the array
+    //since we know the target and that the array is sorted:
+    //we can increase the left pointer if the sum of the pointers is too low
+    //we can decrease the right pointer if the sum is too high
+
+    while (leftIndex < rightIndex) {
+        const sum = numbers[leftIndex] + numbers[rightIndex]
+        if ( sum === target) {
+            return [leftIndex +1, rightIndex +1]
+            //return each index +1 because problem asks to return a 1 indexed solution
+        } 
+
+        if (sum > target) {
+            rightIndex--;
+            // decrease the index is the sum is too high
+        } else {
+            leftIndex++;
+            //increase the index if the sum is too low
+        }
+    }
+
+  };
+  
+
+  console.log(twoSum([4, 11, 17, 25], 21));
+  console.log(twoSum([0, 1, 2, 2, 3, 5], 4));
+  console.log(twoSum([-1, 0], -1));
+
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <>
+    <div>Two Sum II</div>
+    </>
   );
 }
+
